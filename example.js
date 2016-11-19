@@ -17,7 +17,7 @@ const oauth2 = simpleOauthModule.create({
 // Authorization uri definition
 const authorizationUri = oauth2.authorizationCode.authorizeURL({
     redirect_uri: process.env.REDIRECT_URI,
-    scope: 'rede',
+    scope: 'read',
     code: 'code',
 });
 
