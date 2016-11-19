@@ -55,7 +55,7 @@ app.get('/success', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Hello<br><a href="/auth">Log in with Github</a>');
+    res.send('Hello<br><a href="/auth">Log in with MF</a>');
 });
 
 app.listen(3000, () => {
