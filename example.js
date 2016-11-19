@@ -31,7 +31,8 @@ res.redirect(authorizationUri);
 app.get('/callback', (req, res) => {
     const code = req.query.code;
 const options = {
-    code,
+    code: code,
+    redirect_uri: process.env.REDIRECT_URI,
 };
 
 oauth2.authorizationCode.getToken(options, (error, result) => {
