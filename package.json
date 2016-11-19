@@ -3,5 +3,8 @@
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "simple-oauth2": "^1.0.1"
+  },
+  "scripts": {
+    "run": "node -r dotenv/config example.js"
   }
 }
