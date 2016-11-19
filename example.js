@@ -6,21 +6,19 @@ const simpleOauthModule = require('simple-oauth2');
 const app = express();
 const oauth2 = simpleOauthModule.create({
     client: {
-        id: '<CLIENT_ID>',
-        secret: '<CLIENT_SECRET>',
+        id: process.env.CLIENT_ID,
+        secret: process.env.CLIENT_SECRET,
     },
     auth: {
-        tokenHost: 'https://github.com',
-        tokenPath: '/login/oauth/access_token',
-        authorizePath: '/login/oauth/authorize',
+        tokenHost: process.env.TOKEN_HOST,
     },
 });
 
 // Authorization uri definition
 const authorizationUri = oauth2.authorizationCode.authorizeURL({
-    redirect_uri: 'http://localhost:3000/callback',
-    scope: 'notifications',
-    state: '3(#0/!~',
+    redirect_uri: process.env.REDIRECT_URI,
+    scope: 'rede',
+    code: 'code',
 });
 
 // Initial page redirecting to Github
