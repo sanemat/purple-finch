@@ -2,3 +2,4 @@ node_modules/
 .envrc
 .env
 npm-debug.log
+*.marko.js

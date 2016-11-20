@@ -1,7 +1,9 @@
-
+require('marko/express'); //enable res.marko
+require('marko/node-require').install();
 
 const express = require('express');
 const simpleOauthModule = require('simple-oauth2');
+const template = require('./template.marko');
 
 const app = express();
 const oauth2 = simpleOauthModule.create({
@@ -44,9 +46,10 @@ app.get('/callback', (req, res) => {
     console.log('The resulting token: ', result);
     const token = oauth2.accessToken.create(result);
 
-    return res
-    .status(200)
-    .json(token);
+    return res.marko(template, {
+      loggedIn: true,
+      debug: JSON.stringify(token),
+    });
   });
 });
 
@@ -55,7 +58,9 @@ app.get('/success', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('Hello<br><a href="/auth">Log in with MF</a>');
+  return res.marko(template, {
+    loggedIn: false,
+  });
 });
 
 app.listen(3000, () => {
