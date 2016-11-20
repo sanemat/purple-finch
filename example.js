@@ -5,6 +5,7 @@ const express = require('express');
 const simpleOauthModule = require('simple-oauth2');
 const template = require('./template.marko');
 
+const path = require('path');
 const app = express();
 const oauth2 = simpleOauthModule.create({
   client: {
@@ -62,6 +63,8 @@ app.get('/', (req, res) => {
     loggedIn: false,
   });
 });
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(3000, () => {
     console.log('Express server started on port 3000'); // eslint-disable-line
