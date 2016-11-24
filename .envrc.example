@@ -1,0 +1,4 @@
+export CLIENT_ID=''
+export CLIENT_SECRET=''
+export TOKEN_HOST=''
+export REDIRECT_URI=''
