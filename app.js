@@ -7,6 +7,7 @@ const template = require('./template.marko');
 const path = require('path');
 const rp = require('request-promise-native');
 const URI = require('urijs');
+const groundVertices = require('./ground_vertices');
 
 const app = express();
 const oauth2 = simpleOauthModule.create({
@@ -57,6 +58,7 @@ app.get('/callback', (req, res) => {
       console.log('transactions: ', result);
       return res.marko(template, {
         loggedIn: true,
+        groundVertices: [],
       });
     })
     .catch((error) => {
@@ -71,6 +73,7 @@ app.get('/success', (req, res) => {
 
 app.get('/', (req, res) => res.marko(template, {
   loggedIn: false,
+  groundVertices,
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
