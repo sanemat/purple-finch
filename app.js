@@ -46,7 +46,6 @@ app.get('/callback', (req, res) => {
 
       return res.marko(template, {
         loggedIn: true,
-        debug: JSON.stringify(token),
       });
     })
     .catch((error) => {
