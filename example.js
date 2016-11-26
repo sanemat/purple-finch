@@ -1,11 +1,11 @@
-require('marko/express'); //enable res.marko
+require('marko/express'); // enable res.marko
 require('marko/node-require').install();
 
 const express = require('express');
 const simpleOauthModule = require('simple-oauth2');
 const template = require('./template.marko');
-
 const path = require('path');
+
 const app = express();
 const oauth2 = simpleOauthModule.create({
   client: {
@@ -58,11 +58,9 @@ app.get('/success', (req, res) => {
   res.send('');
 });
 
-app.get('/', (req, res) => {
-  return res.marko(template, {
-    loggedIn: false,
-  });
-});
+app.get('/', (req, res) => res.marko(template, {
+  loggedIn: false,
+}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
