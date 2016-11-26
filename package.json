@@ -10,7 +10,8 @@
   },
   "scripts": {
     "start": "node -r dotenv/config app.js",
-    "debug": "node --inspect --debug-brk -r dotenv/config app.js"
+    "debug": "node --inspect --debug-brk -r dotenv/config app.js",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "ava": "^0.17.0",
