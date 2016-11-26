@@ -13,7 +13,8 @@
     "debug": "node --inspect --debug-brk -r dotenv/config app.js",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "test": "ava"
+    "test": "ava",
+    "verify": "npm run lint && npm test"
   },
   "devDependencies": {
     "ava": "^0.17.0",
