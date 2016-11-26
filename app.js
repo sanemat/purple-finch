@@ -68,5 +68,5 @@ app.listen(3000, () => {
     console.log('Express server started on port 3000'); // eslint-disable-line
 });
 
-
-// Credits to [@lazybean](https://github.com/lazybean)
+// Original example: Credits to [@lazybean](https://github.com/lazybean)
+// https://github.com/lelylan/simple-oauth2/blob/a679b54dc492028a85679e54efb35c83d5bb9bbc/example/index.js
