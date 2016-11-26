@@ -9,7 +9,8 @@
     "urijs": "^1.18.3"
   },
   "scripts": {
-    "start": "node -r dotenv/config app.js"
+    "start": "node -r dotenv/config app.js",
+    "debug": "node --inspect --debug-brk -r dotenv/config app.js"
   },
   "devDependencies": {
     "eslint": "^3.10.2",
