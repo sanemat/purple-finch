@@ -5,6 +5,7 @@ const express = require('express');
 const simpleOauthModule = require('simple-oauth2');
 const template = require('./template.marko');
 const path = require('path');
+const rp = require('request-promise-native');
 
 const app = express();
 const oauth2 = simpleOauthModule.create({
