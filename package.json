@@ -5,7 +5,8 @@
     "marko": "^3.12.1",
     "request": "^2.79.0",
     "request-promise-native": "^1.0.3",
-    "simple-oauth2": "^1.0.1"
+    "simple-oauth2": "^1.0.1",
+    "urijs": "^1.18.3"
   },
   "scripts": {
     "start": "node -r dotenv/config app.js"

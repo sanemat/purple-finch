@@ -6,6 +6,7 @@ const simpleOauthModule = require('simple-oauth2');
 const template = require('./template.marko');
 const path = require('path');
 const rp = require('request-promise-native');
+const URI = require('urijs');
 
 const app = express();
 const oauth2 = simpleOauthModule.create({
@@ -44,6 +45,16 @@ app.get('/callback', (req, res) => {
       console.log('The resulting token: ', result);
       const token = oauth2.accessToken.create(result);
 
+      const apiOptions = {
+        uri: URI(process.env.TOKEN_HOST).pathname('/api/v1/transactions').toString(),
+        headers: {
+          'Authorization': `Bearer ${token.token.token.access_token}`
+        },
+      };
+      return rp(apiOptions);
+    })
+    .then((result) => {
+      console.log('transactions: ', result);
       return res.marko(template, {
         loggedIn: true,
       });
