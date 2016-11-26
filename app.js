@@ -73,7 +73,7 @@ app.get('/success', (req, res) => {
 
 app.get('/', (req, res) => res.marko(template, {
   loggedIn: false,
-  groundVertices,
+  groundVertices: JSON.stringify(groundVertices, null, ' '),
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
