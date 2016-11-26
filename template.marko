@@ -1,9 +1,12 @@
-<p if(data.debug)>
+<div if(data.debug)>
   ${data.debug}!
-</p>
-<p unless(data.loggedIn)>
-  Hello<br><a href="/auth">Log in with MF</a>
-</p>
+</div>
+<div if(data.loggedIn)>
+  Logged in with MF
+</div>
+<div else>
+  Hi, <a href="/auth">Log in with MF</a>
+</div>
 <div id="phaser-example"></div>
 
 <footer>
