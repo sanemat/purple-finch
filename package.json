@@ -13,6 +13,7 @@
     "debug": "node --inspect --debug-brk -r dotenv/config app.js"
   },
   "devDependencies": {
+    "ava": "^0.17.0",
     "eslint": "^3.10.2",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0"
