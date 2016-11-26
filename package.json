@@ -12,7 +12,8 @@
     "start": "node -r dotenv/config app.js",
     "debug": "node --inspect --debug-brk -r dotenv/config app.js",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "test": "ava"
   },
   "devDependencies": {
     "ava": "^0.17.0",
