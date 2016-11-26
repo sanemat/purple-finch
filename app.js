@@ -49,7 +49,7 @@ app.get('/callback', (req, res) => {
       const apiOptions = {
         uri: URI(process.env.TOKEN_HOST).pathname('/api/v1/transactions').toString(),
         headers: {
-          'Authorization': `Bearer ${token.token.token.access_token}`
+          Authorization: `Bearer ${token.token.token.access_token}`,
         },
       };
       return rp(apiOptions);
