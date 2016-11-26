@@ -6,7 +6,7 @@
     "simple-oauth2": "^1.0.1"
   },
   "scripts": {
-    "start": "node -r dotenv/config example.js"
+    "start": "node -r dotenv/config app.js"
   },
   "devDependencies": {
     "eslint": "^3.10.2",
