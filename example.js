@@ -38,20 +38,20 @@ app.get('/callback', (req, res) => {
     redirect_uri: process.env.REDIRECT_URI,
   };
 
-  oauth2.authorizationCode.getToken(options, (error, result) => {
-    if (error) {
-      console.error('Access Token Error', error.message);
+  oauth2.authorizationCode.getToken(options)
+    .then((result) => {
+      console.log('The resulting token: ', result);
+      const token = oauth2.accessToken.create(result);
+
+      return res.marko(template, {
+        loggedIn: true,
+        debug: JSON.stringify(token),
+      });
+    })
+    .catch((error) => {
+      console.log('Error', error.message);
       return res.json('Authentication failed');
-    }
-
-    console.log('The resulting token: ', result);
-    const token = oauth2.accessToken.create(result);
-
-    return res.marko(template, {
-      loggedIn: true,
-      debug: JSON.stringify(token),
     });
-  });
 });
 
 app.get('/success', (req, res) => {
