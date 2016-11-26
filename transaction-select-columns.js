@@ -1,6 +1,6 @@
 module.exports = transaction => ({
-  amount: transaction.amount,
-  updated_at: transaction.updated_at,
-  jpyrate: transaction.jpyrate,
-  hashed_id: transaction.hashed_id,
+  amount: transaction.transaction.amount,
+  updated_at: transaction.transaction.updated_at,
+  jpyrate: transaction.transaction.jpyrate,
+  hashed_id: transaction.transaction.hashed_id,
 });
