@@ -4,8 +4,11 @@
 <div if(data.loggedIn)>
   Logged in with MF
 </div>
-<div else>
+<div if(data.isEnableOauth2)>
   Hi, <a href="/auth">Log in with MF</a>
+</div>
+<div else>
+  Hi, Would you set oAuth2 variables up?
 </div>
 <div id="phaser-example"></div>
 

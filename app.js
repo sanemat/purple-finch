@@ -8,9 +8,10 @@ const path = require('path');
 const rp = require('request-promise-native');
 const URI = require('urijs');
 const groundVertices = require('./ground_vertices');
+const isEnableOauth2 = require('./is-enable-oauth2');
 
 const app = express();
-const oauth2 = simpleOauthModule.create({
+const oauth2 = isEnableOauth2() && simpleOauthModule.create({
   client: {
     id: process.env.CLIENT_ID,
     secret: process.env.CLIENT_SECRET,
@@ -21,7 +22,7 @@ const oauth2 = simpleOauthModule.create({
 });
 
 // Authorization uri definition
-const authorizationUri = oauth2.authorizationCode.authorizeURL({
+const authorizationUri = isEnableOauth2() && oauth2.authorizationCode.authorizeURL({
   redirect_uri: process.env.REDIRECT_URI,
   scope: 'read',
   code: 'code',
@@ -73,6 +74,7 @@ app.get('/success', (req, res) => {
 
 app.get('/', (req, res) => res.marko(template, {
   loggedIn: false,
+  isEnableOauth2: isEnableOauth2(),
   groundVertices: JSON.stringify(groundVertices, null, ' '),
 }));
 
