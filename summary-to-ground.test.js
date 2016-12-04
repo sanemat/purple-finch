@@ -12,6 +12,6 @@ const example = new Map([
 ]);
 
 test('converts summary to ground', (t) => {
-  const expected = [-200,1.0333333333333334,-150,0.7,-100,0,-50,0,0,0,50,0.4];
+  const expected = [-200, 1.0333333333333334, -150, 0.7, -100, 0, -50, 0, 0, 0, 50, 0.4];
   t.deepEqual(summaryToGround(example), expected);
 });

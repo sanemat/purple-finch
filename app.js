@@ -62,9 +62,7 @@ app.get('/callback', (req, res) => {
       console.log('transactions: ', result);
       const converted = summaryToGround(fillAndSumTransactions(JSON.parse(result)
         .transactions
-        .map((transaction) => {
-          return transactionSelectColumns(transaction);
-        })));
+        .map(transaction => transactionSelectColumns(transaction))));
       console.log(converted);
       return res.marko(template, {
         loggedIn: true,
