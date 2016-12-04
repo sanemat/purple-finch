@@ -9,6 +9,9 @@ const rp = require('request-promise-native');
 const URI = require('urijs');
 const groundVertices = require('./ground_vertices');
 const isEnableOauth2 = require('./is-enable-oauth2');
+const transactionSelectColumns = require('./transaction-select-columns');
+const fillAndSumTransactions = require('./fill-and-sum-transactions');
+const summaryToGround = require('./summary-to-ground');
 
 const app = express();
 const oauth2 = isEnableOauth2() && simpleOauthModule.create({
@@ -57,9 +60,15 @@ app.get('/callback', (req, res) => {
     })
     .then((result) => {
       console.log('transactions: ', result);
+      const converted = summaryToGround(fillAndSumTransactions(JSON.parse(result)
+        .transactions
+        .map((transaction) => {
+          return transactionSelectColumns(transaction);
+        })));
+      console.log(converted);
       return res.marko(template, {
         loggedIn: true,
-        groundVertices: [],
+        groundVertices: JSON.stringify(converted, null, ' '),
       });
     })
     .catch((error) => {
